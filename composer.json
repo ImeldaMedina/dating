@@ -1,0 +1,13 @@
+{
+  "name": "imedinag@srv601/328/dating",
+  "authors": [
+    {
+      "name":"Imelda Medina",
+      "email": "imedina-castaneda@mail.greenriver.edu"
+    }
+  ],
+  "require": {
+    "bcosca/fatfree-core": "dev-master"
+
+  }
+}
