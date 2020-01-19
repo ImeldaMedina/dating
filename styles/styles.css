@@ -1,0 +1,29 @@
+/*button{*/
+/*    padding-bottom: 5px;*/
+/*    background-color: #95999c;*/
+/*    border: none;*/
+/*    margin-bottom: 10px;*/
+/*}*/
+.container{
+    align-items: center;
+}
+.jumbotron{
+    color: white;
+}
+
+img {
+    float: right;
+    height: 400px;
+}
+h1{
+    align-items: center;
+}
+
+h3{
+    color: #95999c;
+    align-items: center;
+}
+p{
+    float: left;
+
+}
