@@ -1,27 +1,30 @@
-/*button{*/
-/*    padding-bottom: 5px;*/
-/*    background-color: #95999c;*/
-/*    border: none;*/
-/*    margin-bottom: 10px;*/
-/*}*/
+#button{
+
+    /*alignment: center;*/
+    margin-bottom: 100px;
+}
 .container{
     align-items: center;
 }
-.jumbotron{
-    color: white;
+fieldset {
+    border: 1px solid lightgray;
+    padding: 1em;
+    margin: 30px 30px 30px 30px;
 }
-
 img {
     float: right;
-    height: 400px;
+    height: 300px;
 }
 h1{
     align-items: center;
+    align-content: center;
 }
 
 h3{
-    color: #95999c;
     align-items: center;
+}
+nav{
+    text-align: left;
 }
 p{
     float: left;
