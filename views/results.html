@@ -1,22 +1,41 @@
 <include href="views/header.html">
-<body>
-<fieldset>
+
+    <fieldset class="form-group fieldset">
     <div class="row">
-<table>
-    <td>Name: {{@SESSION.fName}}  {{@SESSION.lName}}</td>
-    <td>Gender: {{@SESSION.gender}}</td>
-    <td>Age: {{@SESSION.age}}</td>
-    <td>Phone: {{@SESSION.phoneNum}}</td>
-    <td>Email: {{@SESSION.email}}</td>
-    <td>State: {{@SESSION.state}}</td>
-    <td>Seeking: {{@SESSION.seekGender}}</td>
-   <td>Interests: {{@SESSION.}}{{@SESSION.}}</td>-->
-</table>
-    </div><!--    end of row-->
-    <div class="column">
-        {{@SESSION.biog}}
-    </div>
-    <button type="button" class="btn btn-primary btn-lg text-center">Create a Profile</button>
+        <div class="col">
+            <table style="width:100%">
+                <tr>
+                <td>Name: {{@SESSION.fName}}  {{@SESSION.lName}}</td>
+                </tr>
+                <tr>
+                <td>Gender: {{@SESSION.gender}}</td>
+                </tr>
+                <tr>
+                <td>Age: {{@SESSION.age}}</td>
+                </tr>
+                <tr>
+                <td>Phone: {{@SESSION.phoneNum}}</td>
+                </tr>
+                <tr>
+                <td>Email: {{@SESSION.email}}</td>
+                </tr>
+                <tr>
+                <td>State: {{@SESSION.state}}</td>
+                </tr>
+                <tr>
+                <td>Seeking: {{@SESSION.seekGender}}</td>
+                </tr>
+                <tr>
+               <td>Interests: {{@SESSION.inter}}{{@SESSION.out}}</td>
+                </tr>
+            </table>
+        </div><!--    end of col-->
+                <div class="col">
+                    {{@SESSION.biog}}
+                <button type="button" class="btn btn-primary btn-lg text-center">Contact Me!</button>
+                </div><!--end of col-->
+    </div><!--end of row-->
+
 </fieldset>
 
 </form><!--end of form-->
