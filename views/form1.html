@@ -1,0 +1,46 @@
+<include href="views/header.html">
+<body>
+<form method="post" action="order2">
+    <div class="form-group fieldset">
+        <b><h1 class="text-left">Personal Information</h1></b>
+            <fieldset id="topFieldsed">
+        <div class="form-group row">
+            <div class="form-group col-8">
+                <b><label>First Name</label></b>
+                <label for="fName"></label>
+                <input type="text" class="form-control" id="fName" name="fName" >
+                <b><label>Last Name</label></b>
+                <label for="lName"></label>
+                <input type="text" class="form-control" id="lName" name="lName">
+                <b><label>Age</label></b>
+                <label for="age"></label>
+                <input type="text" class="form-control" id="age" name="age">
+                <b><label>Gender</label></b><br>
+                <label class="radio-inline">
+                    <input type="radio"  name="gender" checked>Male
+                </label>
+                <label class="radio-inline">
+                    <input type="radio"  name="gender">Female
+                </label><br>
+                 <b><label>Phone Number</label></b>
+                    <input type="tel" class="form-control" name="phoneNum">
+            </div><!-- end of row-->
+                <div class="col-4">
+            <!--Note box -->
+                    <div class="alert alert-secondary w-75">
+                        <b>Note:</b> All information entered is protected
+                            by our <a href="#" >privacy policy. </a> Profile information
+                            can only be viewed by others with your permission.
+                    </div><!--end of alert-->
+                    <div class="align-self-end ml-auto">
+                        <button id="form1btn" type="submit" class="btn btn-primary mb-2 text-right">Next></button>
+                    </div><!--end of div align-button-->
+                </div><!--end of column-->
+        </div><!--en of row -->
+    </fieldset>
+    </div>
+</form><!--end of form-->
+<script src="js/jquery.slim.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+</body>

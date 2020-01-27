@@ -1,67 +1,29 @@
-<!--
-/**
- * @author Imelda Medina
- * @version 1.0
- * 1/15/2020
- * 328/dating.home.html
- * This is an online dating website. The user will create a profile in this website.
- */-->
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <title>Dating</title>
-    <!--Favicon-->
-    <link rel="icon" type="image/jpg" href="images/heart.jpeg">
-    <link rel="stylesheet" type="text/css" href="styles/styles.css">
-</head>
-<!--<body>-->
-<body data-spy="scroll" data-target="#navbar-site" data-offset="80">
-<!--Navigation bar-->
-<nav id="navbar-site" class="navbar navbar-light bg-light navbar-expand-sm" style="background-color: gray">
-<!--    <div class="container">-->
-        <ul class="navbar-nav">
-            <li class="nav-item"><a class="nav-link" href="#home">Best Dating Site</a></li>
-        </ul><!-- container -->
-<!--    </div>&lt;!&ndash; navbar-nav &ndash;&gt;-->
-</nav><!--End of navbar-->
-<form id="dating-form" action="confirmation.php" method="post">
-    <fieldset class="form-group">
-        <div class="container">
-            <section class="media mb-2" id="dating">
-                <div class="media-body row">
-                    <h1 class="display-4" style="text-align:center">Best Dating Site</h1>
-                        <p>Welcome to the best dating site! <strong>Best Dating Site</strong> where you can meet new people or new
-                        friends from nearby or from around the world. Meeting people has never been easier. Find new friends based on common interests, location, age and more. </p>
-                        <div class="container">
-                            <h3 style="text-align:center">Hear what our users are saying about us.</h3>
-                            <hr>
-                            <p>"Best dating web site! I met a lot of nice people. We go hiking, to the casino, to the park, we go shopping, etc..  Thanks to best dating site." -Susan</p>
-                            <p>"Thanks to best dating site I met my husband. We have been married for 2 years now. This web site is amazing" -Lesli</p>
-                            <p>"I used this web site to met people and I only have nice experiences with the people that I met. They are really good at keeping  you personal information like
-                            phone number and e-mail address private. You don't have to share your personal information unless you want to." - Santiago</p>
-                        </div><!-- end of container-->
-                        <!-- button-->
-                        <div class="text-center row">
-                        <hr>
-                        <button id="button" type="button" class="btn btn-primary btn-lg">Create a Profile</button>
-                        </div><!--end of div (button)-->
-                </div><!--end of div media-body-->
-
-            <div class="col">
-               <img class="img-fluid rounded" style="width: 400px" src="images/images.jpeg" alt="couples in love">
-            </div><!--end of div (image)-->
-
-            </section><!--end of section-->
-
-        </div><!--end of container-->
-    </fieldset><!--end of form group-->
-</form><!--end of form-->
+<include href="views/header.html">
+    <form method="post" action="order">
+        <fieldset class="form-group fieldset">
+            <div class="row">
+                <div class="col-6">
+                    <div id="text-container" class="media-body row justify-content-center">
+                        <h1 class="display-4 text-center">Best Dating Site</h1>
+                            <p>Welcome to the best dating site! <strong>Best Dating Site</strong> where you can meet new people or new
+                            friends from nearby or from around the world. Meeting people has never been easier. Find new friends based on common interests, location, age and more. </p>
+                                <h3 class="text-center">Hear what our users are saying about us.</h3>
+                                <fieldset class="top-bottom">
+                                <i><p>"Best dating web site! I met a lot of nice people. We go hiking, to the casino, to the park, we go shopping, etc..  Thanks to best dating site." -Susan</p>
+                                <p>"Thanks to best dating site I met my husband. We have been married for 2 years now. This web site is amazing" -Lesli</p>
+                                <p>"I used this web site to met people and I only have nice experiences with the people that I met. They are really good at keeping  you personal information like
+                                phone number and e-mail address private. You don't have to share your personal information unless you want to." - Santiago</p></i>
+                                </fieldset>
+                            <!-- button-->
+                            <button type="button" class="btn btn-primary btn-lg text-center">Create a Profile</button>
+                    </div><!--end of div media-body-->
+                </div><!--end of col-->
+                <div class="col-6">
+                   <img class="img-fluid rounded" src="images/images.jpeg" alt="couples in love">
+                </div><!--end of div (image)-->
+            </div><!--end of row-->
+        </fieldset><!--end of form group-->
+    </form><!--end of form-->
 <script src="js/jquery.slim.min.js"></script>
 <script src="js/popper.min.js"></script>
 <script src="js/bootstrap.min.js"></script>

@@ -1,0 +1,120 @@
+<include href="views/header.html">
+<body>
+<form method="post" action="summary">
+    <fieldset class="form-group fieldset">
+        <b><h1 class="text-left">Interest</h1></b>
+            <fieldset id="topFieldsed"></fieldset>
+        <b><label class="text-left">In-door Interests</label></b><br>
+                <div class="row">
+                    <div class="col">
+                        <div>
+                    <input class="form-check-input" type="checkbox"
+                           value="tv" id="tv" name="in-door[]">
+                        <label class="form-check-label" for="tv">
+                            tv
+                        </label>
+                        </div>
+                    <input class="form-check-input" type="checkbox"
+                           value="puzzles" id="puzzles" name="in-door[]">
+                        <label class="form-check-label" for="puzzles">
+                            puzzles
+                        </label>
+                </div><!-- end of col-->
+                <div class="col">
+                    <div>
+                        <input class="form-check-input" type="checkbox"
+                               value="movies" id="movies" name="in-door[]">
+                    <label class="form-check-label" for="movies">
+                        movies
+                    </label>
+                    </div>
+                        <input class="form-check-input" type="checkbox"
+                               value="reading" id="reading" name="in-door[]">
+                    <label class="form-check-label" for="reading">
+                        reading
+                    </label>
+                </div><!-- end of column-->
+                <div class="col">
+                    <div>
+                    <input class="form-check-input" type="checkbox"
+                           value="cooking" id="cooking" name="in-door[]">
+                    <label class="form-check-label" for="cooking">
+                        cooking
+                    </label>
+                    </div>
+                    <input class="form-check-input" type="checkbox"
+                           value="playCards" id="playCards" name="in-door[]">
+                    <label class="form-check-label" for="playCards">
+                        play cards
+                    </label>
+                </div><!-- end of row-->
+                <div class="col">
+                    <div>
+                    <input class="form-check-input" type="checkbox"
+                           value="boardGames" id="boardGames" name="in-door[]">
+                    <label class="form-check-label" for="boardGames">
+                        board games
+                    </label>
+                    </div>
+                    <input class="form-check-input" type="checkbox"
+                           value="videoGames" id="videoGames" name="in-door[]">
+                    <label class="form-check-label" for="videoGames">
+                        video games
+                    </label>
+                </div><!-- end of column-->
+                </div><!--end of row-->
+        <b><label class="text-left">Out-door Interests</label></b>
+                <div class="row">
+                    <div class="col">
+                    <div>
+                    <input class="form-check-input" type="checkbox"
+                           value="hiking" id="hiking" name="out-door[]">
+                    <label class="form-check-label" for="hiking">
+                        hiking
+                    </label>
+                    </div>
+                    <input class="form-check-input" type="checkbox"
+                           value="walking" id="walking" name="out-door[]">
+                    <label class="form-check-label" for="walking">
+                        walking
+                    </label>
+                </div><!-- end of col-->
+                <div class="col">
+                    <div>
+                    <input class="form-check-input" type="checkbox"
+                           value="biking" id="biking" name="out-door[]">
+                    <label class="form-check-label" for="biking">
+                        biking
+                    </label>
+                    </div>
+                    <input class="form-check-input" type="checkbox"
+                           value="climbing" id="climbing" name="out-door[]">
+                    <label class="form-check-label" for="climbing">
+                        climbing
+                    </label>
+                </div><!-- end of column-->
+                <div class="col">
+                    <input class="form-check-input" type="checkbox"
+                           value="swimming" id="swimming" name="out-door[]">
+                    <label class="form-check-label" for="swimming">
+                        swimming
+                    </label>
+                </div><!-- end of row-->
+                <div class="col">
+                    <input class="form-check-input" type="checkbox"
+                           value="collecting" id="collecting" name="out-door[]">
+                    <label class="form-check-label" for="collecting">
+                        collecting
+                    </label>
+        <div class="align-self-end ml-auto">
+            <button id="form1btn" type="submit" class="btn btn-primary mb-1 text-right">Next></button>
+        </div><!--end of div align-button-->
+                </div><!-- end of column-->
+                </div><!--end of row-->
+    </fieldset>
+</form><!--end of form-->
+<script src="js/jquery.slim.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+</body>
+</html>
