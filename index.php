@@ -29,6 +29,7 @@ $f3->route('GET /order', function(){
     echo $view->render('views/form1.html');
 });
 $f3->route('POST /order2', function(){
+
 //   var_dump($_POST);
     $_SESSION['fName'] = $_POST['fName'];
     $_SESSION['lName'] = $_POST['lName'];
@@ -39,6 +40,7 @@ $f3->route('POST /order2', function(){
     echo $view->render('views/form2.html');
 });
 $f3->route('POST /order3', function(){
+
 //    var_dump($_POST);
     $_SESSION['email'] = $_POST['email'];
     $_SESSION['state'] = $_POST['state'];
@@ -50,30 +52,40 @@ $f3->route('POST /order3', function(){
 //get the indoor and outdoor interests
 $f3->route('POST /summary', function(){
 //    $_SESSION['in-door[]'] = $_POST['in-door[]'];
-    $indoor=$_POST['in-door'];
+    $value="";
+    $indoor= $_POST['in-door'];
     $_SESSION['in'] = array();
-    if(!empty($indoor)){
+    if(isset($indoor)){
         foreach ($indoor as $value){
-            array_push($_SESSION['in'],$value);
+//            array_push($_SESSION['in'],$value);
+            $_SESSION['inter'] .= $value . " ";
         }
+//        $_SESSION['inter'] .= $value . " ";
     }
-    foreach ($_SESSION['in'] as $value){
-        $_SESSION['inter'] .= $value .',';
-    }
+//    if(isset($indoor)){
+//        foreach ($_SESSION['in'] as $value) {
+//            $_SESSION['inter'] = $value . " ";
+//        }
+//    }
 
 //    $_SESSION['out-door[]'] = $_POST['out-door[]'];
-    $outdoor=$_POST['out-door'];
+    $val="";
+    $outdoor= $_POST['out-door'];
     $_SESSION['int'] = array();
-    if(!empty($outdoor)){
+    if(isset($outdoor)){
         foreach ($outdoor as $val){
-            array_push($_SESSION['int'],$val);
+//            array_push($_SESSION['int'],$val);
+            $_SESSION['out'] .= $val . " ";
         }
+//        $_SESSION['out'] .= $val . " ";
     }
-    foreach ($_SESSION['int'] as $value){
-        $_SESSION['out'] .= $value .',';
-    }
+//        foreach ($_SESSION['int'] as $val) {
+//            $_SESSION['out'] .= $val . " ";
+//        }
     $view = new Template();
     echo $view->render('views/results.html');
+    //this will wipe everything
+    session_destroy();
 });
 
 //Run F3
