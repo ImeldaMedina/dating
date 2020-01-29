@@ -1,11 +1,13 @@
 .btn{
-
     text-align: center;
     margin-top: 15px;
     margin-bottom: 6em;
 }
 #biog{
     margin-bottom: 15px;
+}
+#black{
+    align-content: center;
 }
 
 .container{
@@ -23,6 +25,13 @@
     bottom: 0;
     right:0;
 }
+table, td {
+    border-spacing: 5px;
+    border-collapse: collapse;
+    padding: 15px;
+    border: 1px solid lightgray;
+    color: gray;
+}
 
 img {
     /*float: left;*/
@@ -31,6 +40,9 @@ img {
 }
 h1, h3{
     text-align: center;
+}
+h2{
+    color: gray;
 }
 
 nav{
