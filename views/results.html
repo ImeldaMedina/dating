@@ -29,12 +29,17 @@
                <td>Interests: {{@SESSION.inter}}{{@SESSION.out}}</td>
                 </tr>
             </table>
+
         </div><!--    end of col-->
                 <div class="col">
-                    {{@SESSION.biog}}
-                <button type="button" class="btn btn-primary btn-lg text-center">Contact Me!</button>
+                    <img id="black"class="rounded w-50 align-content-center" src="images/profile.jpeg" alt="profile picture">
+                    <h2 class="text-secondary">Bibliography</h2>
+                    <p class="text-secondary">{{@SESSION.biog}}</p>
                 </div><!--end of col-->
     </div><!--end of row-->
+        <div class="col-md-12 col-md-offset-3 text-center">
+            <button type="button" class="btn btn-primary btn-lg text-center">Contact Me!</button>
+        </div>
 
 </fieldset>
 
