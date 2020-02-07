@@ -26,7 +26,7 @@
                 <td>Seeking: {{@SESSION.seekGender}}</td>
                 </tr>
                 <tr>
-               <td>Interests: {{@SESSION.inter}}{{@SESSION.out}}</td>
+               <td>Interests: {{ ", ", implode(@SESSION.inter) }} <br>  {{ ", ", implode(@SESSION.out) }}</td>
                 </tr>
             </table>
 

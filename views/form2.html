@@ -1,5 +1,5 @@
 <include href="views/header.html">
-<form method="post" action="order3">
+<form method="post" action="#">
     <fieldset class="form-group fieldset">
         <h1 class="text-left"><b>Profile</b></h1>
             <fieldset id="topFieldsed"></fieldset>
@@ -7,7 +7,10 @@
                     <div class="col">
                 <!--         Email input-->
                     <label><b>Email</b></label>
-                    <input type="text" class="form-control" id="email" name="email" >
+                    <input type="text" class="form-control" id="email" name="email" value="{{ @email }}" >
+                        <check if="{{ @errors['email'] }}">
+                            <span class="err">{{ @errors['email'] }}</span>
+                        </check><br><br>
                 <!--    Display a state dropdown list-->
                         <br><label><b>State</b></label><br>
                     <select class="w-100" name="state">

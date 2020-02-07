@@ -1,5 +1,5 @@
 <include href="views/header.html">
-<form method="post" action="order2">
+<form method="post" action="#">
     <div class="form-group fieldset">
         <h1 class="text-left"><b>Personal Information</b></h1>
             <fieldset id="topFieldsed">
@@ -7,13 +7,25 @@
             <div class="form-group col-8">
                 <b><label>First Name</label></b>
                 <label for="fName"></label>
-                <input type="text" class="form-control" id="fName" name="fName" >
+                <input type="text" class="form-control" id="fName" name="fName" value="{{ @fName }}">
+                <check if="{{ @errors['fName'] }}">
+                    <span class="err">{{ @errors['fName'] }}</span>
+                </check><br><br>
+
                 <b><label>Last Name</label></b>
-                <label for="lName"></label>
-                <input type="text" class="form-control" id="lName" name="lName">
+               <label for="lName"></label>                             <!--this will make the form sticky-->
+                <input type="text" class="form-control" id="lName" name="lName" value="{{ @lName }}">
+                <check if="{{ @errors['lName'] }}">
+                    <span class="err">{{ @errors['lName'] }}</span>
+                </check><br><br>
+
                 <b><label>Age</label></b>
                 <label for="age"></label>
-                <input type="text" class="form-control" id="age" name="age">
+                <input type="text" class="form-control" id="age" name="age" value="{{ @age }}">
+                <check if="{{ @errors['age'] }}">
+                    <span class="err">{{ @errors['age'] }}</span>
+                </check><br><br>
+
                 <b><label>Gender</label></b><br>
                 <label class="radio-inline">
                     <input type="radio"  name="gender" value="Male" checked>Male
@@ -21,8 +33,12 @@
                 <label class="radio-inline">
                     <input type="radio"  name="gender" value="Female" >Female
                 </label><br>
+
                  <b><label>Phone Number</label></b>
-                    <input type="tel" class="form-control" name="phoneNum">
+                    <input type="tel" class="form-control" name="phoneNum" value="{{ @phoneNum }}">
+                <check if="{{ @errors['phoneNum'] }}">
+                    <span class="err">{{ @errors['phoneNum'] }}</span>
+                </check><br><br>
             </div><!-- end of row-->
                 <div class="col-4">
             <!--Note box -->
