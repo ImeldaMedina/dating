@@ -22,9 +22,9 @@ $f3 = Base:: instance();
 $f3->set('DEBUG' ,3);
 
 //define arrays
-$f3->set('indoor', array('tv', 'puzzles', 'movies', 'reading', 'cooking',
+$f3->set('indoors', array('tv', 'puzzles', 'movies', 'reading', 'cooking',
     'playing cards', 'board games', 'video games'));
-$f3->set('outdoor', array('hiking', 'walking', 'biking', 'climbing', 'swimming', 'collecting'));
+$f3->set('outdoors', array('hiking', 'walking', 'biking', 'climbing', 'swimming', 'collecting'));
 
 //define a default route
 $f3->route('GET /', function(){
@@ -106,9 +106,9 @@ $f3->route('GET|POST /order3', function($f3){
         if(!empty($_POST['indoor'])) {
             $selectedIndoor = $_POST['indoor'];
         }
-        $f3->set('SelectedIndoor', $selectedIndoor);
+        $f3->set('selectedIndoor', $selectedIndoor);
 
-        $_SESSION['in'] = array();
+        $_SESSION['indoors'] = array();
         if (isset($selectedIndoor)) {
             foreach ($selectedIndoor as $value) {
                 $_SESSION['inter'] .= $value . " ";
@@ -119,9 +119,9 @@ $f3->route('GET|POST /order3', function($f3){
         if(!empty($_POST['outdoor'])) {
             $selectedOutdoor = $_POST['outdoor'];
         }
-        $f3->set('outdoor', $selectedOutdoor);
+        $f3->set('selectedOutdoor', $selectedOutdoor);
 
-        $_SESSION['int'] = array();
+        $_SESSION['outdoors'] = array();
         if (isset($selectedOutdoor)) {
             foreach ($selectedOutdoor as $val) {
                 $_SESSION['out'] .= $val . " ";

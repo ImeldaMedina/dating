@@ -6,23 +6,11 @@
 
 <!-- use a repeat block to display the checkboxes-->
 
-
-<!--           <p>Select Condiments<br>
-        <repeat group="{{ @condiments }}" value="{{ @condimentsOption }}">
-            <label><input type="checkbox"
-                          name="condiments[]"
-                          value="{{ @condimentsOption }}"
-
-                <check if="{{ isset(@selectedCondiments) && in_array(@condimentsOption, @selectedCondiments) }}">
-                    checked="checked"
-                </check>
-
-                >{{ @condimentsOption }}
-            </label><br>
-        </repeat>
-    </p>-->
         <b><label class="text-left">In-door Interests</label></b><br>
-        <repeat group="{{ @indoor }}" value="{{ @indoorOption }}">
+        <check if="{{ @errors['indoor'] }}">
+            <span class="err">{{ @errors['indoor'] }}</span>
+        </check><br><br>
+        <repeat group="{{ @indoors }}" value="{{ @indoorOption }}">
             <label><input type="checkbox"
                           name="indoor[]"
                           value="{{ @indoorOption }}"
@@ -30,6 +18,7 @@
                 <check if="{{ isset(@selectedIndoor) && in_array(@indoorOption, @selectedIndoor) }}">
                     checked="checked"
                 </check>
+
 
                 >{{ @indoorOption }}
             </label><br>
@@ -93,16 +82,17 @@
 <!--                </div>&lt;!&ndash; end of column&ndash;&gt;-->
 <!--                </div>&lt;!&ndash;end of row&ndash;&gt;-->
         <b><label class="text-left">Out-door Interests</label></b><br>
-        <repeat group="{{ @outdoor }}" value="{{ @outdoorOption }}">
-            <label><input type="checkbox"
+        <check if="{{ @errors['outdoor'] }}">
+            <span class="err">{{ @errors['outdoor'] }}</span>
+        </check><br><br>
+        <repeat group="{{ @outdoors }}" value="{{ @outdoorOption }}">
+            <label><input class="form-check-input" type="checkbox"
                           name="outdoor[]"
                           value="{{ @outdoorOption }}"
 
                 <check if="{{ isset(@selectedOutdoor) && in_array(@outdoorOption, @selectedOutdoor) }}">
                     checked="checked"
                 </check>
-                <div class="row">
-                    <div class="col">
                 >{{ @outdoorOption }}
             </label><br>
         </repeat>
