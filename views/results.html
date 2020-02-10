@@ -8,7 +8,13 @@
                 <td>Name: {{@SESSION.fName}}  {{@SESSION.lName}}</td>
                 </tr>
                 <tr>
-                <td>Gender: {{@SESSION.gender}}</td>
+                <td>
+                    Gender:
+                    <check if="{{ isset(@SESSION.gender) }}">
+                        <true> {{ @SESSION.gender }} </true>
+                        <false></false>
+                    </check>
+                </td>
                 </tr>
                 <tr>
                 <td>Age: {{@SESSION.age}}</td>
@@ -23,10 +29,25 @@
                 <td>State: {{@SESSION.state}}</td>
                 </tr>
                 <tr>
-                <td>Seeking: {{@SESSION.seekGender}}</td>
+                <td>Seeking:
+                    <check if="{{ isset(@SESSION.seekGender) }}">
+                    <true> {{ @SESSION.seekGender }} </true>
+                    <false></false>
+                    </check>
+                </td>
                 </tr>
                 <tr>
-               <td>Interests: {{ implode(", ", @SESSION.inter) }} {{ implode(", ", @SESSION.out) }}</td>
+               <td>Interests:
+                   <check if="{{ isset(@SESSION.inter) }}">
+                       <true> {{ implode(",", @SESSION.inter) }} </true>
+                       <false></false>
+                   </check>
+
+                   <check if="{{ isset(@SESSION.out) }}">
+                       <true> {{ implode(",", @SESSION.out) }} </true>
+                       <false></false>
+                   </check>
+                   </td>
                 </tr>
             </table>
 

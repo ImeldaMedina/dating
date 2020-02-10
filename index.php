@@ -22,6 +22,8 @@ $f3 = Base:: instance();
 $f3->set('DEBUG' ,3);
 
 //define arrays
+$f3->set('genders', array('male', 'female'));
+$f3->set('seekGenders', array('male', 'female'));
 $f3->set('indoors', array('tv', 'puzzles', 'movies', 'reading', 'cooking',
     'playing cards', 'board games', 'video games'));
 $f3->set('outdoors', array('hiking', 'walking', 'biking', 'climbing', 'swimming', 'collecting'));
@@ -108,7 +110,7 @@ $f3->route('GET|POST /order3', function($f3){
         }
         $f3->set('selectedIndoor', $selectedIndoor);
 
-        $_SESSION['indoors'] = array();
+        $_SESSION['in'] = array();
         if (isset($selectedIndoor)) {
             foreach ($selectedIndoor as $value) {
                 $_SESSION['inter'] .= $value . " ";
@@ -121,7 +123,7 @@ $f3->route('GET|POST /order3', function($f3){
         }
         $f3->set('selectedOutdoor', $selectedOutdoor);
 
-        $_SESSION['outdoors'] = array();
+        $_SESSION['int'] = array();
         if (isset($selectedOutdoor)) {
             foreach ($selectedOutdoor as $val) {
                 $_SESSION['out'] .= $val . " ";

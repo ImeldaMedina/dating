@@ -27,12 +27,24 @@
                 </check><br><br>
 
                 <b><label>Gender</label></b><br>
-                <label class="radio-inline">
-                    <input type="radio"  name="gender" value="Male" checked>Male
-                </label>
-                <label class="radio-inline">
-                    <input type="radio"  name="gender" value="Female" >Female
-                </label><br>
+                <repeat group="{{ @genders }}" value="{{ @genderOption }}">
+                    <label class="radio-inline"><input type="radio"
+                                  name="gender"
+                                  value="{{ @genderOption }}"
+
+                        <check if="{{ @gender == @genderOption }}">
+                            checked="checked"
+                        </check>
+
+                        >{{ @genderOption }}
+                    </label><br>
+                </repeat>
+<!--                <label class="radio-inline">-->
+<!--                    <input type="radio"  name="gender" value="Male" checked>Male-->
+<!--                </label>-->
+<!--                <label class="radio-inline">-->
+<!--                    <input type="radio"  name="gender" value="Female" >Female-->
+<!--                </label><br>-->
 
                  <b><label>Phone Number</label></b>
                     <input type="tel" class="form-control" name="phoneNum" value="{{ @phoneNum }}">

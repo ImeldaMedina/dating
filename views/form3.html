@@ -3,148 +3,49 @@
     <fieldset class="form-group fieldset">
         <b><h1 class="text-left">Interest</h1></b>
             <fieldset id="topFieldsed"></fieldset>
+        <div class="row">
+            <div class="col">
+                <div class="clearfix" ng-if="$index % 2 == 0"></div>
+                    <div class="col">
+                        <!--in-door interests-->
+                        <b><label class="text-left">In-door Interests</label></b><br>
+                            <repeat group="{{ @indoors }}" value="{{ @indoorOption }}">
+                                <label><input class="form-check-input" type="checkbox"
+                                              name="indoor[]"
+                                              value="{{ @indoorOption }}"
 
-<!-- use a repeat block to display the checkboxes-->
+                                    <check if="{{ isset(@selectedIndoor) && in_array(@indoorOption, @selectedIndoor) }}">
+                                        checked="checked"
+                                    </check>
 
-        <b><label class="text-left">In-door Interests</label></b><br>
-        <check if="{{ @errors['indoor'] }}">
-            <span class="err">{{ @errors['indoor'] }}</span>
-        </check><br><br>
-        <repeat group="{{ @indoors }}" value="{{ @indoorOption }}">
-            <label><input type="checkbox"
-                          name="indoor[]"
-                          value="{{ @indoorOption }}"
+                                    >{{ @indoorOption }}
+                                </label><br>
+                            </repeat>
 
-                <check if="{{ isset(@selectedIndoor) && in_array(@indoorOption, @selectedIndoor) }}">
-                    checked="checked"
-                </check>
+                        <!--outdoor interests-->
+                        <b><label class="text-left">Out-door Interests</label></b><br>
+                            <repeat group="{{ @outdoors }}" value="{{ @outdoorOption }}">
+                                <label><input class="form-check-input" type="checkbox"
+                                              name="outdoor[]"
+                                              value="{{ @outdoorOption }}"
 
+                                    <check if="{{ isset(@selectedOutdoor) && in_array(@outdoorOption, @selectedOutdoor) }}">
+                                        checked="checked"
+                                    </check>
+                                    >{{ @outdoorOption }}
+                                </label><br>
+                            </repeat>
 
-                >{{ @indoorOption }}
-            </label><br>
-        </repeat>
-<!--                <div class="row">-->
-<!--                    <div class="col">-->
-<!--                        <div>-->
-<!--                    <input class="form-check-input" type="checkbox"-->
-<!--                           value={{ @indoorOptions }}} id="tv" name="indoor[]">-->
-<!--                        <label class="form-check-label" for="tv">-->
-<!--                            tv-->
-<!--                        </label>-->
-<!--                        </div>-->
-<!--                    <input class="form-check-input" type="checkbox"-->
-<!--                           value="puzzles" id="puzzles" name="indoor[]">-->
-<!--                        <label class="form-check-label" for="puzzles">-->
-<!--                            puzzles-->
-<!--                        </label>-->
-<!--                    </div>&lt;!&ndash; end of col&ndash;&gt;-->
-<!--                <div class="col">-->
-<!--                    <div>-->
-<!--                        <input class="form-check-input" type="checkbox"-->
-<!--                               value="movies" id="movies" name="indoor[]">-->
-<!--                    <label class="form-check-label" for="movies">-->
-<!--                        movies-->
-<!--                    </label>-->
-<!--                    </div>-->
-<!--                        <input class="form-check-input" type="checkbox"-->
-<!--                               value="reading" id="reading" name="indoor[]">-->
-<!--                    <label class="form-check-label" for="reading">-->
-<!--                        reading-->
-<!--                    </label>-->
-<!--                </div>&lt;!&ndash; end of column&ndash;&gt;-->
-<!--                <div class="col">-->
-<!--                    <div>-->
-<!--                    <input class="form-check-input" type="checkbox"-->
-<!--                           value="cooking" id="cooking" name="indoor[]">-->
-<!--                    <label class="form-check-label" for="cooking">-->
-<!--                        cooking-->
-<!--                    </label>-->
-<!--                    </div>-->
-<!--                    <input class="form-check-input" type="checkbox"-->
-<!--                           value="playCards" id="playCards" name="indoor[]">-->
-<!--                    <label class="form-check-label" for="playCards">-->
-<!--                        play cards-->
-<!--                    </label>-->
-<!--                </div>&lt;!&ndash; end of row&ndash;&gt;-->
-<!--                <div class="col">-->
-<!--                    <div>-->
-<!--                    <input class="form-check-input" type="checkbox"-->
-<!--                           value="boardGames" id="boardGames" name="indoor[]">-->
-<!--                    <label class="form-check-label" for="boardGames">-->
-<!--                        board games-->
-<!--                    </label>-->
-<!--                    </div>-->
-<!--                    <input class="form-check-input" type="checkbox"-->
-<!--                           value="videoGames" id="videoGames" name="indoor[]">-->
-<!--                    <label class="form-check-label" for="videoGames">-->
-<!--                        video games-->
-<!--                    </label>-->
-<!--                </div>&lt;!&ndash; end of column&ndash;&gt;-->
-<!--                </div>&lt;!&ndash;end of row&ndash;&gt;-->
-        <b><label class="text-left">Out-door Interests</label></b><br>
-        <check if="{{ @errors['outdoor'] }}">
-            <span class="err">{{ @errors['outdoor'] }}</span>
-        </check><br><br>
-        <repeat group="{{ @outdoors }}" value="{{ @outdoorOption }}">
-            <label><input class="form-check-input" type="checkbox"
-                          name="outdoor[]"
-                          value="{{ @outdoorOption }}"
-
-                <check if="{{ isset(@selectedOutdoor) && in_array(@outdoorOption, @selectedOutdoor) }}">
-                    checked="checked"
-                </check>
-                >{{ @outdoorOption }}
-            </label><br>
-        </repeat>
-<!--                <div class="row">-->
-<!--                    <div class="col">-->
-<!--                    <div>-->
-<!--                    <input class="form-check-input" type="checkbox"-->
-<!--                           value="hiking" id="hiking" name="outdoor[]">-->
-<!--                    <label class="form-check-label" for="hiking">-->
-<!--                        hiking-->
-<!--                    </label>-->
-<!--                    </div>-->
-<!--                    <input class="form-check-input" type="checkbox"-->
-<!--                           value="walking" id="walking" name="outdoor[]">-->
-<!--                    <label class="form-check-label" for="walking">-->
-<!--                        walking-->
-<!--                    </label>-->
-<!--                </div>&lt;!&ndash; end of col&ndash;&gt;-->
-<!--                <div class="col">-->
-<!--                    <div>-->
-<!--                    <input class="form-check-input" type="checkbox"-->
-<!--                           value="biking" id="biking" name="outdoor[]">-->
-<!--                    <label class="form-check-label" for="biking">-->
-<!--                        biking-->
-<!--                    </label>-->
-<!--                    </div>-->
-<!--                    <input class="form-check-input" type="checkbox"-->
-<!--                           value="climbing" id="climbing" name="outdoor[]">-->
-<!--                    <label class="form-check-label" for="climbing">-->
-<!--                        climbing-->
-<!--                    </label>-->
-<!--                </div>&lt;!&ndash; end of column&ndash;&gt;-->
-<!--                <div class="col">-->
-<!--                    <input class="form-check-input" type="checkbox"-->
-<!--                           value="swimming" id="swimming" name="outdoor[]">-->
-<!--                    <label class="form-check-label" for="swimming">-->
-<!--                        swimming-->
-<!--                    </label>-->
-<!--                </div>&lt;!&ndash; end of row&ndash;&gt;-->
-<!--                <div class="col">-->
-<!--                    <input class="form-check-input" type="checkbox"-->
-<!--                           value="collecting" id="collecting" name="outdoor[]">-->
-<!--                    <label class="form-check-label" for="collecting">-->
-<!--                        collecting-->
-<!--                    </label>-->
-        <div class="align-self-end ml-auto">
-            <button id="form1btn" type="submit" class="btn btn-primary mb-1 text-right">Next></button>
-        </div><!--end of div align-button-->
-                </div><!-- end of column-->
+                        <div class="align-self-end ml-auto">
+                            <button id="form1btn" type="submit" class="btn btn-primary mb-1 text-right">Next></button>
+                        </div><!--end of div align-button-->
+                    </div><!-- end of column-->
                 </div><!--end of row-->
+            </div>
+        </div>
     </fieldset>
 </form><!--end of form-->
+<!--
 <script src="js/jquery.slim.min.js"></script>
 <script src="js/popper.min.js"></script>
 <script src="js/bootstrap.min.js"></script>

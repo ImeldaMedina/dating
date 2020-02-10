@@ -68,12 +68,25 @@
                     </select><br>
                     <!--        radio inline buttons (male and female)-->
                     <br><label><b>Seeking</b></label><br>
-                        <label class="radio-inline">
-                            <input type="radio" name="seekGender" value="Male" checked>Male
-                        </label>
-                        <label class="radio-inline">
-                            <input type="radio" name="seekGender" value="Female">Female
-                        </label><br>
+<!--                        <label class="radio-inline">-->
+<!--                            <input type="radio" name="seekGender" value="Male" checked>Male-->
+<!--                        </label>-->
+<!--                        <label class="radio-inline">-->
+<!--                            <input type="radio" name="seekGender" value="Female">Female-->
+<!--                        </label><br>-->
+                        <repeat group="{{ @seekGenders }}" value="{{ @seekOption }}">
+                            <label for="{{ @seekOption }}" class="radio-inline"><input type="radio"
+                                                               id="{{ @seekOption }}"
+                                                               name="seekGender"
+                                                               value="{{ @seekOption }}"
+
+                                <check if="{{ @seekGender == @seekOption }}">
+                                    checked="checked"
+                                </check>
+
+                                >{{ @seekOption }}
+                            </label><br>
+                        </repeat>
                         </div><!-- end of col       -->
 
                     <div class="col">
