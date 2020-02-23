@@ -9,9 +9,9 @@ function validForm()
     $isValid = true;
 
 //checks to see that a string is all alphabetic REQUIRED
-    if (!validName($f3->get('fName'))) {
+    if (!validName($f3->get('fname'))) {
         $isValid = false;
-        $f3->set("errors['fName']", "Please enter a valid first name");
+        $f3->set("errors['fname']", "Please enter a valid first name");
     }
     if (!validLast($f3->get('lName'))) {
         $isValid = false;
@@ -60,8 +60,8 @@ function validForm3(){
     return $isValid;
 }
 //checks to see that a string is all alphabetic REQUIRED
-function validName($fName){
-    return !empty($fName) && ctype_alpha($fName);
+function validName($fname){
+    return !empty($fname) && ctype_alpha($fname);
 }
 ////checks to see that a string is all alphabetic REQUIRED
 function validLast($lName){

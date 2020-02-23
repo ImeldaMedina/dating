@@ -5,33 +5,33 @@
         <div class="col">
             <table style="width:100%">
                 <tr>
-                <td>Name: {{@SESSION.fName}}  {{@SESSION.lName}}</td>
+                <td>Name: {{@SESSION['member']->getFname() }}  {{@SESSION['member']->getLname() }}</td>
                 </tr>
                 <tr>
                 <td>
                     Gender:
                     <check if="{{ isset(@SESSION.gender) }}">
-                        <true> {{ @SESSION.gender }} </true>
+                        <true> {{ @SESSION['member']->getGender() }} </true>
                         <false></false>
                     </check>
                 </td>
                 </tr>
                 <tr>
-                <td>Age: {{@SESSION.age}}</td>
+                <td>Age: {{@SESSION['member']->getAge() }}</td>
                 </tr>
                 <tr>
-                <td>Phone: {{@SESSION.phoneNum}}</td>
+                <td>Phone: {{@SESSION['member']->getPhone() }}</td>
                 </tr>
                 <tr>
-                <td>Email: {{@SESSION.email}}</td>
+                <td>Email: {{@SESSION['member']->getEmail() }}</td>
                 </tr>
                 <tr>
-                <td>State: {{@SESSION.state}}</td>
+                <td>State: {{@SESSION['member']->getState() }}</td>
                 </tr>
                 <tr>
                 <td>Seeking:
                     <check if="{{ isset(@SESSION.seekGender) }}">
-                    <true> {{ @SESSION.seekGender }} </true>
+                    <true> {{ @SESSION['member']->getSeeking() }} </true>
                     <false></false>
                     </check>
                 </td>
