@@ -91,14 +91,13 @@ function validEmail($email){
 function validOutdoor($outdoor){
     global $f3;
     return true;
-//    global $f3;
-//    return in_array($outdoor, $f3->get('outdoors'));
+
 }
 
 //checks each selected indoor interest against a list of valid option
 function validIndoor($indoor){
    global $f3;
    return true;
-//    return in_array($indoor, $f3->get('indoors'));
+
 
 }

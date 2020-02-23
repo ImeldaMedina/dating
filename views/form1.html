@@ -5,27 +5,28 @@
             <fieldset id="topFieldsed">
         <div class="form-group row">
             <div class="form-group col-8">
+                <!-- First name -->
                 <b><label>First Name</label></b>
                 <label for="fName"></label>
                 <input type="text" class="form-control" id="fName" name="fName" value="{{ @fName }}">
                 <check if="{{ @errors['fName'] }}">
                     <span class="err">{{ @errors['fName'] }}</span>
                 </check><br><br>
-
+                        <!--Last name-->
                 <b><label>Last Name</label></b>
                <label for="lName"></label>                             <!--this will make the form sticky-->
                 <input type="text" class="form-control" id="lName" name="lName" value="{{ @lName }}">
                 <check if="{{ @errors['lName'] }}">
                     <span class="err">{{ @errors['lName'] }}</span>
                 </check><br><br>
-
+                    <!--Age-->
                 <b><label>Age</label></b>
                 <label for="age"></label>
                 <input type="text" class="form-control" id="age" name="age" value="{{ @age }}">
                 <check if="{{ @errors['age'] }}">
                     <span class="err">{{ @errors['age'] }}</span>
-                </check><br><br>
-
+                </check><br>
+                <!--  Gender-->
                 <b><label>Gender</label></b><br>
                 <repeat group="{{ @genders }}" value="{{ @genderOption }}">
                     <label class="radio-inline"><input type="radio"
@@ -37,20 +38,18 @@
                         </check>
 
                         >{{ @genderOption }}
-                    </label><br>
-                </repeat>
-<!--                <label class="radio-inline">-->
-<!--                    <input type="radio"  name="gender" value="Male" checked>Male-->
-<!--                </label>-->
-<!--                <label class="radio-inline">-->
-<!--                    <input type="radio"  name="gender" value="Female" >Female-->
-<!--                </label><br>-->
-
+                    </label>
+                </repeat><br>
+                        <!--Phone number-->
                  <b><label>Phone Number</label></b>
                     <input type="tel" class="form-control" name="phoneNum" value="{{ @phoneNum }}">
                 <check if="{{ @errors['phoneNum'] }}">
                     <span class="err">{{ @errors['phoneNum'] }}</span>
-                </check><br><br>
+                </check><br>
+                <!--   Premium membership-->
+                <b><label>Premium Membership</label></b><br>
+                <input type="checkbox" name="premium" value="{{ @premium}}">
+                Sign me up for a Premium Account!
             </div><!-- end of row-->
                 <div class="col-4">
             <!--Note box -->

@@ -37,6 +37,8 @@
                 </td>
                 </tr>
                 <tr>
+                    <check if="{{ isset(@SESSION.premium) }}">
+                        <true>
                <td>Interests:
                    <check if="{{ isset(@SESSION.inter) }}">
                        <true> {{ implode(",", @SESSION.inter) }} </true>
@@ -47,6 +49,9 @@
                        <true> {{ implode(",", @SESSION.out) }} </true>
                        <false></false>
                    </check>
+                        </true>
+                        <false></false>
+                    </check>
                    </td>
                 </tr>
             </table>
