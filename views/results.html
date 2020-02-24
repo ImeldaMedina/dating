@@ -9,11 +9,8 @@
                 </tr>
                 <tr>
                 <td>
-                    Gender:
-                    <check if="{{ isset(@SESSION.gender) }}">
-                        <true> {{ @SESSION['member']->getGender() }} </true>
-                        <false></false>
-                    </check>
+                    Gender: {{ @SESSION['member']->getGender() }}
+
                 </td>
                 </tr>
                 <tr>
@@ -29,11 +26,8 @@
                 <td>State: {{@SESSION['member']->getState() }}</td>
                 </tr>
                 <tr>
-                <td>Seeking:
-                    <check if="{{ isset(@SESSION.seekGender) }}">
-                    <true> {{ @SESSION['member']->getSeeking() }} </true>
-                    <false></false>
-                    </check>
+                <td>Seeking: {{ @SESSION['member']->getSeeking() }}
+
                 </td>
                 </tr>
                 <tr>
@@ -41,12 +35,12 @@
                         <true>
                <td>Interests:
                    <check if="{{ isset(@SESSION.inter) }}">
-                       <true> {{ implode(",", @SESSION.inter) }} </true>
+                       <true> {{ implode(",", @SESSION['member']->getInDoorInterests()) }} </true>
                        <false></false>
                    </check>
 
                    <check if="{{ isset(@SESSION.out) }}">
-                       <true> {{ implode(",", @SESSION.out) }} </true>
+                       <true> {{ implode(",", @SESSION['member']->getOutDoorInterests()) }} </true>
                        <false></false>
                    </check>
                         </true>

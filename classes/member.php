@@ -1,21 +1,29 @@
 <?php
 
 /**
- * Class Member
+ * Class Member will get ans set name, last, age, gender, and phone of the user
  */
 class Member
 {
     private $_fname;
     private $_lname;
-    private $_age;
     private $_gender;
+    private $_age;
     private $_phone;
     private $_email;
     private $_state;
     private $_seeking;
     private $_bio;
 
-    public function __construct($fname, $lname, $age, $gender, $phone)
+    /**
+     * Memeber constructor.
+     * @param $fname
+     * @param $lname
+     * @param $gender
+     * @param $age
+     * @param $phone
+     */
+    public function __construct($fname, $lname,$gender, $age,  $phone)
     {
         $this->_fname = $fname;
         $this->_lname = $lname;
