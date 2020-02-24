@@ -1,17 +1,26 @@
 <?php
 
-
+/**
+ * Class PremiumMember gets and sets the indoor and outdoor interests.
+ */
 class PremiumMember extends Member
 {
+    /**
+     * @var $_inDoorInterests
+     */
     private $_inDoorInterests;
+    /**
+     * @var $_outDoorInterests
+     */
     private $_outDoorInterests;
+
 
     /**
      * PremiumMember constructor.
      * @param $_inDoorInterests
      * @param $_outDoorInterests
      */
-//    public function __construct()
+    //    public function __construct()
     public function __construct($_inDoorInterests, $_outDoorInterests)
     {
         parent::__construct();
@@ -20,10 +29,8 @@ class PremiumMember extends Member
     }
 
     /**
-     * @return mixed
+     * @return indoor interest
      */
-
-
 
     public function getInDoorInterests()
     {
@@ -31,7 +38,7 @@ class PremiumMember extends Member
     }
 
     /**
-     * @param mixed $inDoorInterests
+     * @param $inDoorInterests represents the indoor interests
      */
     public function setInDoorInterests($inDoorInterests)
     {
@@ -39,7 +46,7 @@ class PremiumMember extends Member
     }
 
     /**
-     * @return mixed
+     * @return outdoor interest
      */
     public function getOutDoorInterests()
     {
@@ -47,7 +54,7 @@ class PremiumMember extends Member
     }
 
     /**
-     * @param mixed $outDoorInterests
+     * @param mixed $outDoorInterests represents the outdoor interests
      */
     public function setOutDoorInterests($outDoorInterests)
     {

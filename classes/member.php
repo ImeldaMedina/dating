@@ -17,11 +17,11 @@ class Member
 
     /**
      * Memeber constructor.
-     * @param $fname
-     * @param $lname
-     * @param $gender
-     * @param $age
-     * @param $phone
+     * @param $fname represents the first name of the user.
+     * @param $lname represents the last name of the user.
+     * @param $gender represents the gender of hte user.
+     * @param $age represents the age of the user.
+     * @param $phone represents the phone number of the user.
      */
     public function __construct($fname, $lname,$gender, $age,  $phone)
     {
@@ -34,7 +34,8 @@ class Member
     }
 
     /**
-     * @return the first name of the user.
+     * gets the first name of the user.
+     * @return represents first name of the user.
      */
     public function getFname()
     {
