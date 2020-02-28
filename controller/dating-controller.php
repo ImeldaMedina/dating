@@ -7,47 +7,61 @@ class DatingController{
     public function __construct($f3)
     {
         $this->_f3 = $f3;
+        $this->_val = new Validation();
     }
     public function home()
     {
         $view = new Template();
         echo $view->render('views/home.html');
     }
+    public function admin()
+    {
+        $view = new Template();
+        echo $view->render('views/admin.php');
+    }
+
     public function order($f3)
     {
         //If form has been submitted, validate
         if($_SERVER['REQUEST_METHOD'] == 'POST') {
-//            //Get data from the form
-            $fname = $_POST['fname'];
-            $lName = $_POST['lName'];
-            $age = $_POST['age'];
-            $gender = $_POST['gender'];
-            $phoneNum = $_POST['phoneNum'];
-            $premium = $_POST['premium'];
 
-            //Add data to hive
-            $f3->set('fname', $fname);
-            $f3->set('lName', $lName);
-            $f3->set('age', $age);
-            $f3->set('gender', $gender);
-            $f3->set('phoneNum', $phoneNum);
-            $f3->set('premium',$premium);
-
-            //check if the premium is selected
-            $premium = isset($_POST['premium']);
-            $_SESSION['premium'] = $premium;
-            if(isset($_POST['premium'])){
-                $member = new PremiumMember($fname, $lName, $age, $gender, $phoneNum);
-            }
-            else{
-                $member = new Member($fname, $lName, $age, $gender, $phoneNum);
-            }
             //if data is valid
-            if (validForm()) {
-            //store the data in member object if its valid
-                $_SESSION['member'] = $member;
+            if ($this->_val->validForm()) {
+                //Get the form values
+                $fname = $_POST['fname'];
+                $lName = $_POST['lName'];
+                $age = $_POST['age'];
+                $gender = $_POST['gender'];
+                $phoneNum = $_POST['phoneNum'];
+//                $premium = $_POST['premium'];
+
+                //Instantiate a member object
+                //check if the premium is selected
+                $premium = isset($_POST['premium']);
+                $_SESSION['premium'] = $premium;
+                if(isset($_POST['premium'])){
+                    $member = new PremiumMember($fname, $lName, $age, $gender, $phoneNum);
+                }
+                else{
+                    $member = new Member($fname, $lName, $age, $gender, $phoneNum);
+                }
+
+                //Write student to the database
+                $GLOBALS['db']->insertMember($member);
+
+                //store the data in member object if its valid
+//                $_SESSION['member'] = $member;
                 //redirect to form 2
                 $f3->reroute('/order2');
+            }
+            else{
+                //Data was not valid
+                //Get errors from Validator and add to f3 hive
+                $this->_f3->set('errors', $this->_val->getErrors());
+                //var_dump($this->_f3->get('errors'));
+
+                //Add POST array data to f3 hive for "sticky" form
+                $this->_f3->set('member', $_POST);
             }
         }
         $view = new Template();
@@ -58,35 +72,36 @@ class DatingController{
     {
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 //Get data from the form
-                $email = $_POST['email'];
-                $state = $_POST['state'];
-                $seeking = $_POST['seekGender'];
-                $bio = $_POST['biog'];
-
-                //add date to hive
-                $f3->set('email', $email);
-                $f3->set('state', $state);
-                $f3->set('seekGender', $seeking);
-                $f3->set('biog', $bio);
-
                 //if data is valid
-                if (validForm2()) {
-//                    $_SESSION['member'] = $member;
-                    $_SESSION['member']->setEmail($email);;
-                    $_SESSION['member']->setState($state);
-                    $_SESSION['member']->setSeeking($seeking);
-                    $_SESSION['member']->setBio($bio);
+                if ($this->_val->validForm()) {
+                    //Get the form values
 
+                    $email = $_POST['email'];
+                    $state = $_POST['state'];
+                    $seeking = $_POST['seekGender'];
+                    $bio = $_POST['biog'];
+
+                    //Instantiate a member object
+//                    if(isset($_POST['premium'])){
+//                        $member = new PremiumMember($fname, $lName, $age, $gender, $phoneNum);
+//                    }
+//                    else{
+//                        $member = new Member($fname, $lName, $age, $gender, $phoneNum);
+//                    }
+
+                    //Write student to the database
+//                    $GLOBALS['db']->insertMember($member);
 
                     //redirect to order 3 or summary if premium is checked
-                   if(isset($_SESSION['premium'])){
-                       $f3->reroute('/order3');
-                   }
-                   else{
+                    if ($_SESSION['member'] instanceof PremiumMember) {
+                        $f3->reroute('/order3');
+                    } else {
                         $f3->reroute('/summary');
-                   }
+                    }
+
                 }
             }
+
         //Display order form
         $view = new Template();
         echo $view->render('views/form2.html');
@@ -121,7 +136,7 @@ class DatingController{
                     $_SESSION['out'] .= $val . " ";
                 }
             }
-            if (validForm3()) {
+            if (validForm()) {
                 //store the data in member object if its valid
                 $_SESSION['out']=$selectedOutdoor;
                 $_SESSION['inter']=$selectedIndoor;

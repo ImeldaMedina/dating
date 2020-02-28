@@ -31,7 +31,7 @@
                 </td>
                 </tr>
                 <tr>
-                    <check if="{{ isset(@SESSION.premium) }}">
+                    <check if="{{ @SESSION['member'] instanceof PremiumMember }}">
                         <true>
                <td>Interests:
                    <check if="{{ isset(@SESSION.inter) }}">
@@ -54,7 +54,7 @@
                 <div class="col">
                     <img id="black"class="rounded w-50 align-content-center" src="images/profile.jpeg" alt="profile picture">
                     <h2 class="text-secondary">Bibliography</h2>
-                    <p class="text-secondary">{{@SESSION.biog}}</p>
+                    <p class="text-secondary">{{ @SESSION['member']->getBio() }}</p>
                 </div><!--end of col-->
     </div><!--end of row-->
         <div class="col-md-12 col-md-offset-3 text-center">

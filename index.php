@@ -4,7 +4,7 @@
  * @version 1.0
  * 1/15/2020
  * 328/dating.index.php
- * instantiating home.html
+ * instantiating login.html
  */
 
 
@@ -41,11 +41,16 @@ $f3->route('GET /', function(){
     $GLOBALS['controller']->home();
 
 });
+//define a new root for order
+$f3->route('GET|POST /admin', function($f3){
+    $GLOBALS['controller']->admin($f3);
+});
 
 //define a new root for order
 $f3->route('GET|POST /order', function($f3){
     $GLOBALS['controller']->order($f3);
 });
+
 
 $f3->route('GET|POST /order2', function($f3){
     $GLOBALS['controller']->order2($f3);
