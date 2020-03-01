@@ -1,6 +1,8 @@
 <?php
 
 /**
+ * @author Imelda Medina
+ * @version 5.0
  * Class PremiumMember gets and sets the indoor and outdoor interests.
  */
 class PremiumMember extends Member

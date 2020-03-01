@@ -1,6 +1,8 @@
 <?php
 
 /**
+ * @author Imelda Medina
+ * @Version 5.0
  * Class Member will get ans set name, last, age, gender, and phone of the user
  */
 class Member
@@ -14,6 +16,8 @@ class Member
     private $_state;
     private $_seeking;
     private $_bio;
+    private $_premium;
+
 
     /**
      * Memeber constructor.
@@ -23,7 +27,7 @@ class Member
      * @param $age represents the age of the user.
      * @param $phone represents the phone number of the user.
      */
-    public function __construct($fname, $lname,$gender, $age,  $phone)
+    public function __construct($fname, $lname, $gender, $age, $phone)
     {
         $this->_fname = $fname;
         $this->_lname = $lname;
@@ -176,5 +180,21 @@ class Member
     public function setBio($bio)
     {
         $this->_bio = $bio;
+    }
+
+    /**
+     * @return gets if the member is premium or not
+     */
+    public function getPremium()
+    {
+        return $this->_premium;
+    }
+
+    /**
+     * @param sets member to premium or not
+     */
+    public function setPremium($premium)
+    {
+        $this->_premium = $premium;
     }
 }
