@@ -8,45 +8,40 @@
                 <td>Name: {{@SESSION['member']->getFname() }}  {{@SESSION['member']->getLname() }}</td>
                 </tr>
                 <tr>
-                <td>
-                    Gender: {{ @SESSION['member']->getGender() }}
-
-                </td>
+                <td>Gender: {{ @SESSION['member']->getGender() }}</td>
                 </tr>
                 <tr>
-                <td>Age: {{@SESSION['member']->getAge() }}</td>
+                <td>Age: {{ @SESSION['member']->getAge() }}</td>
                 </tr>
                 <tr>
-                <td>Phone: {{@SESSION['member']->getPhone() }}</td>
+                <td>Phone: {{ @SESSION['member']->getPhone() }}</td>
                 </tr>
                 <tr>
-                <td>Email: {{@SESSION['member']->getEmail() }}</td>
+                <td>Email: {{ @SESSION['member']->getEmail() }}</td>
                 </tr>
                 <tr>
-                <td>State: {{@SESSION['member']->getState() }}</td>
+                <td>State: {{ @SESSION['member']->getState() }}</td>
                 </tr>
                 <tr>
-                <td>Seeking: {{ @SESSION['member']->getSeeking() }}
-
-                </td>
+                <td>Seeking: {{ @SESSION['member']->getSeeking() }}</td>
                 </tr>
                 <tr>
                     <check if="{{ @SESSION['member'] instanceof PremiumMember }}">
                         <true>
-               <td>Interests:
-                   <check if="{{ isset(@SESSION.inter) }}">
-                       <true> {{ implode(",", @SESSION['member']->getInDoorInterests()) }} </true>
-                       <false></false>
-                   </check>
+                            <td>Interests:
+                                 <check if="{{ isset(@SESSION.inter) }}">
+                                    <true> {{ implode(",", @SESSION['member']->getInDoorInterests()) }} </true>
+                                    <false></false>
+                                </check>
 
-                   <check if="{{ isset(@SESSION.out) }}">
-                       <true> {{ implode(",", @SESSION['member']->getOutDoorInterests()) }} </true>
-                       <false></false>
-                   </check>
+                                <check if="{{ isset(@SESSION.out) }}">
+                                     <true> {{ implode(",", @SESSION['member']->getOutDoorInterests()) }} </true>
+                                    <false></false>
+                                </check>
+                            </td>
                         </true>
                         <false></false>
                     </check>
-                   </td>
                 </tr>
             </table>
 

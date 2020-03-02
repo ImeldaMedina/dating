@@ -36,8 +36,9 @@ FOREIGN KEY(interest_id) REFERENCES interest(interest_id)
 
  */
 
-/**
- * Class Database
+/**@author Imleda Medina
+ * @version 5.0
+ * Class Database will select query from my sql it will also select query from my sql
  */
 class Database
 {
@@ -60,6 +61,9 @@ class Database
         }
     }
 
+    /**
+     * @return the members
+     */
     function getMembers()
     {
         //1. Define the query
@@ -80,7 +84,11 @@ class Database
         $result = $statement-> fetch(PDO::FETCH_ASSOC);
         return $result;
     }
-//    member_id
+
+    /**
+     * @param $member_id this is the member id
+     * @return the information of the member
+     */
     function getMember($member_id)
     {
         //1. Define the query
@@ -97,7 +105,11 @@ class Database
         $result = $statement->fetchAll(PDO::FETCH_ASSOC);
         return $result;
     }
-//    member_id
+
+    /**
+     * @param $member_id represents the member id
+     * @return the interests of the member
+     */
     function getInterests($member_id)
     {
         //1. Define the query
@@ -120,6 +132,10 @@ class Database
         return $result;
     }
 
+    /**
+     * @param $member the member that if filling up the form
+     * @return mixed inserts the info of the member into database
+     */
     function insertMember($member)
     {
         //1. Define the query
@@ -158,15 +174,5 @@ class Database
         //Get the key of the last inserted row
         return $this->_dbh->lastInsertId();
     }
-    function insertInterest($member)
-    {
-        $sql = "INSERT INTO interest(interest_id, interest, type)
-                VALUES(default,:indoor, :outdoor )";
-        //2. Prepare the statement
-        $statement = $this->_dbh->prepare($sql);
-
-
-}
-
 
 }

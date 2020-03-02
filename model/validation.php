@@ -35,8 +35,10 @@ class Validation
         return empty($this->_errors);
     }
 
-
-    //checks to see that a string is all alphabetic REQUIRED
+    /**
+     * checks to see that a string is all alphabetic REQUIRED
+     * @param $fname first name
+     */
     function validName($fname)
     {
         //First name is required
@@ -44,8 +46,10 @@ class Validation
             $this->_errors['fname'] = "First name is required";
         }
     }
-
-    ////checks to see that a string is all alphabetic REQUIRED
+    /**
+     * checks to see that a string is all alphabetic REQUIRED
+     * @param $lName last name
+     */
     function validLast($lName)
     {
         //last name is required
@@ -53,32 +57,42 @@ class Validation
             $this->_errors['lName'] = "Last name is required";
         }
     }
-
-    ////    checks to see that an age is numeric and between 18 and 118 REQUIRED
+    /**
+     * checks to see that an age is numeric and between 18 and 118 REQUIRED
+     * @param $age represents the age of the member
+     */
     function validAge($age)
     {
         if (empty($age) && ctype_digit($age) && $age > 18 && $age < 118) {
             $this->_errors['age'] = "Age is required and must be between 18 and 118";
         }
     }
-    ////    checks to see that a phone number is valid
-    //// (you can decide what constitutes a “valid” phone number)
+    /**
+     * checks to see that a phone number is valid
+     (you can decide what constitutes a “valid” phone number)
+     * @param $phoneNum represents the phone number of hte member
+     */
     function validPhone($phoneNum)
     {
         if (empty($phoneNum) && strlen($phoneNum) == 10 && ctype_digit($phoneNum)) {
             $this->_errors['phoneNum'] = "Please enter a valid phone number";
         }
     }
-
-    ////    checks to see that an email address is valid
+    /**
+     *  checks to see that an email address is valid
+     * @param $email represnts the email
+     */
     function validEmail($email)
     {
         if (empty($email) && filter_var($email, FILTER_VALIDATE_EMAIL)) {
             $this->_errors['email'] = "Please enter a valid email";
         }
     }
+    /**
+     * checks each selected outdoor interest
+     * @param $outdoor outdoor interest
+     */
 
-    //checks each selected outdoor interest against a list of valid option
     function validOutdoor($outdoor)
     {
 
@@ -86,8 +100,11 @@ class Validation
             $this->_errors['outdoor'] = "Please select a valid out-door interest";
         }
     }
+    /**
+     * checks each selected indoor interest against a list of valid option
+     * @param $indoor indoor interests
+     */
 
-    //checks each selected indoor interest against a list of valid option
     function validIndoor($indoor)
     {
         global $f3;
