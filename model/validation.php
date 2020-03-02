@@ -36,57 +36,64 @@ class Validation
     }
 
 
-
-
     //checks to see that a string is all alphabetic REQUIRED
     function validName($fname)
     {
-        return !empty($fname) && ctype_alpha($fname);
+        //First name is required
+        if (empty($fname) && ctype_alpha($fname)) {
+            $this->_errors['fname'] = "First name is required";
+        }
     }
 
     ////checks to see that a string is all alphabetic REQUIRED
     function validLast($lName)
     {
-        return !empty($lName) && ctype_alpha($lName);
+        //last name is required
+        if (empty($lName) && ctype_alpha($lName)) {
+            $this->_errors['lName'] = "Last name is required";
+        }
     }
 
     ////    checks to see that an age is numeric and between 18 and 118 REQUIRED
     function validAge($age)
     {
-        if (ctype_digit($age) && $age > 18 && $age < 118) {
-            return !empty($age);
+        if (empty($age) && ctype_digit($age) && $age > 18 && $age < 118) {
+            $this->_errors['age'] = "Age is required and must be between 18 and 118";
         }
     }
     ////    checks to see that a phone number is valid
     //// (you can decide what constitutes a “valid” phone number)
     function validPhone($phoneNum)
     {
-        if (strlen($phoneNum) == 10 && ctype_digit($phoneNum)) {
-            return !empty($phoneNum);
+        if (empty($phoneNum) && strlen($phoneNum) == 10 && ctype_digit($phoneNum)) {
+            $this->_errors['phoneNum'] = "Please enter a valid phone number";
         }
     }
 
     ////    checks to see that an email address is valid
     function validEmail($email)
     {
-        if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            return !empty($email);
+        if (empty($email) && filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $this->_errors['email'] = "Please enter a valid email";
         }
     }
 
     //checks each selected outdoor interest against a list of valid option
     function validOutdoor($outdoor)
     {
-        global $f3;
-        return true;
 
+        if (isset($outdoor)) {
+            $this->_errors['outdoor'] = "Please select a valid out-door interest";
+        }
     }
 
     //checks each selected indoor interest against a list of valid option
     function validIndoor($indoor)
     {
         global $f3;
-        return true;
+        if (isset($indoor)) {
+            $this->_errors['outdoor'] = "Please select a valid in-door interest";
+        }
 
 
     }

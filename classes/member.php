@@ -31,12 +31,11 @@ class Member
     {
         $this->_fname = $fname;
         $this->_lname = $lname;
-        $this->_age = $age;
         $this->_gender = $gender;
+        $this->_age = $age;
         $this->_phone = $phone;
 
     }
-
     /**
      * gets the first name of the user.
      * @return represents first name of the user.
@@ -71,22 +70,6 @@ class Member
     }
 
     /**
-     * @return mixed the age of the user
-     */
-    public function getAge()
-    {
-        return $this->_age;
-    }
-
-    /**
-     * @param mixed $age represents the age of the user
-     */
-    public function setAge($age)
-    {
-        $this->_age = $age;
-    }
-
-    /**
      * @return the gender of the user
      */
     public function getGender()
@@ -100,6 +83,21 @@ class Member
     public function setGender($gender)
     {
         $this->_gender = $gender;
+    }
+    /**
+     * @return mixed the age of the user
+     */
+    public function getAge()
+    {
+        return $this->_age;
+    }
+
+    /**
+     * @param mixed $age represents the age of the user
+     */
+    public function setAge($age)
+    {
+        $this->_age = $age;
     }
 
     /**
