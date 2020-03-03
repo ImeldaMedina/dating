@@ -11,7 +11,7 @@ email varchar(30),
 state varchar(30),
 seeking varchar(30),
 bio varchar(255),
-premium tinyint(),
+premium tinyint,
 PRIMARY KEY (member_id) )
 
  */
@@ -54,8 +54,11 @@ class Database
         try
         {
             //Instantiate a database object
-            $this->_dbh = new PDO( DB_DSN, DB_USERNAME, DB_PASSWORD );
-                // echo 'Connected to database!';
+            //we just need to return it because the are already calling it from the constructor
+            return new PDO( DB_DSN, DB_USERNAME, DB_PASSWORD );
+            //we don't need this because we are already calling it in the constructor
+//            $this->_dbh = new PDO( DB_DSN, DB_USERNAME, DB_PASSWORD );
+                 echo 'Connected to database!';
         } catch(PDOException $e) {
             echo $e ->getMessage();
         }
@@ -68,20 +71,18 @@ class Database
     {
         //1. Define the query
         $sql = "SELECT * 
-                    FROM member, interest
-                    WHERE member.interest_id = interest.interest_id
-                    AND interest.member_id= :member_id";
+                    FROM member
+                    ORDER BY lname";
 
         //2. Prepare the statement
         $statement = $this->_dbh->prepare($sql);
 
-        //3.Bind the parameters
-        $statement->bindParam(':member_id', $member);
-        //4. Execute the statement
+
+        //3. Execute the statement
         $statement->execute();
 
-        //5. Get the result
-        $result = $statement-> fetch(PDO::FETCH_ASSOC);
+        //4. Get the result
+        $result = $statement-> fetchAll(PDO::FETCH_ASSOC);
         return $result;
     }
 
@@ -93,10 +94,13 @@ class Database
     {
         //1. Define the query
         $sql = "SELECT * FROM member
-                ORDER BY member.lname DESC";
+                WHERE member_id = :member_id";
 
         //2. Prepare the statement
         $statement = $this->_dbh->prepare($sql);
+
+        //3.bind the parameters
+        $statement->bindParam(':member_id', $member_id);
 
         //4. Execute the statement
         $statement->execute();
@@ -115,7 +119,7 @@ class Database
         //1. Define the query
 
         $sql = "SELECT * FROM interest
-                WHERE interest.member_id= 
+                WHERE :member_id = 
                 interest.interest_id; ";
 
         //2. Prepare the statement
@@ -142,14 +146,14 @@ class Database
         $sql = "";
         if ($_SESSION['member'] instanceof PremiumMember) {
             $sql .= "INSERT INTO member ( member_id, fname, lname, age, gender, phone, email, state, seeking,
-                bio, premium,interest)
+                bio, premium)
                 VALUES (default , :fname, :lName, :age,:gender ,:phoneNum ,:email ,:state ,:seekGender ,
-                        :biog, 1, :indoor )";
+                        :biog, 1)";
         }else {
             $sql = "INSERT INTO member ( member_id, fname, lname, age, gender, phone, email, state, seeking,
-                    bio, premium,interest)
+                    bio, premium)
                     VALUES (default , :fname, :lName, :age,:gender ,:phoneNum ,:email ,:state ,:seekGender ,
-                            :biog, 0, :indoor )";
+                            :biog, 0 )";
         }
         //2. Prepare the statement
         $statement = $this->_dbh->prepare($sql);
@@ -164,9 +168,9 @@ class Database
         $statement->bindParam(':state', $member->getState());
         $statement->bindParam(':seekGender', $member->getSeeking());
         $statement->bindParam(':biog', $member->getBio());
-        $statement->bindParam(':premium', $member->getPremium());
-        $statement->bindParam(':indoor', $member->getInDoorInterests());
-        $statement->bindParam(':outdoor', $member->getOutDoorInterests());
+//        $statement->bindParam(':premium', $member->getPremium());
+//        $statement->bindParam(':indoor', $member->getInDoorInterests());
+//        $statement->bindParam(':outdoor', $member->getOutDoorInterests());
 
         //4. Execute the statement
         $statement->execute();

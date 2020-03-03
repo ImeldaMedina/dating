@@ -1,5 +1,10 @@
 <?php
-
+/**
+ * @author Imelda Medina
+ * @version 1.0
+ * Dating controller creates the routes for the different pages, validates, inserts
+ * and gets information from the dating form.
+ */
 class DatingController{
     private $_f3; //router
     private $_val; //validation
@@ -11,21 +16,19 @@ class DatingController{
         $this->_val = new Validation();
 
     }
-    public function admin()
-    {
-        $membersTotal = $GLOBALS['db']->getMembers();
-        $this->_f3->set('member', $membersTotal);
 
-        $view = new Template();
-        echo $view->render('views/admin.php');
-    }
+    /**
+     * creating a route for home, the main page.
+     */
     public function home()
     {
         $view = new Template();
         echo $view->render('views/home.html');
     }
 
-
+/**
+ * creates a route and validates the form
+ */
     public function order($f3)
     {
         //If form has been submitted, validate
@@ -45,14 +48,11 @@ class DatingController{
                 $premium = isset($_POST['premium']);
                 $_SESSION['premium'] = $premium;
                 if(isset($_POST['premium'])){
-                    $member = new PremiumMember($fname, $lName, $age, $gender, $phoneNum);
+                    $member = new PremiumMember($fname, $lName, $gender, $age, $phoneNum);
                 }
                 else{
-                    $member = new Member($fname, $lName, $age, $gender, $phoneNum);
+                    $member = new Member($fname, $lName, $gender, $age, $phoneNum);
                 }
-//                $GLOBALS['db']->insertMember($member);
-//                var_dump($member);
-
                 //store the data in member object if its valid
                 $_SESSION['member'] = $member;
                 //redirect to form 2
@@ -72,6 +72,10 @@ class DatingController{
         echo $view->render('views/form1.html');
     }
 
+    /**
+     * Creates a route and validates the form
+     * @param $f3
+     */
     public function order2($f3)
     {
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -81,7 +85,7 @@ class DatingController{
                     $seeking = $_POST['seekGender'];
                     $bio = $_POST['biog'];
                 //if data is valid
-                if ($this->_val->validForm()) {
+                if ($this->_val->validSecondForm()) {
 
                     $memberOthers = $_SESSION['member'];
                     $memberOthers->setEmail($email);
@@ -119,6 +123,11 @@ class DatingController{
         $view = new Template();
         echo $view->render('views/form2.html');
     }
+
+    /**
+     * creating route into the interest page
+     * @param $f3
+     */
     public function order3($f3)
     {
         //If form has been submitted, validate
@@ -150,21 +159,19 @@ class DatingController{
                     }
                 }
                 //if data is valid
-                if ($this->_val->validForm()) {
-
-                    $memberOther = $_SESSION['member'];
-                    $memberOther->setOutDoorInterests($selectedOutdoor);
-                    $memberOther->setnDoorInterests($selectedIndoor);
-                    $_SESSION['member'] = $memberOther;
-
-                    $GLOBALS['db']->insertMember($_SESSION['member'], $selectedOutdoor);
-                    $GLOBALS['db']->insertMember($_SESSION['member'], $selectedIndoor);
+                if ($this->_val->validInterestForm()) {
                     //store the data in member object if its valid
                 $_SESSION['out'] = $selectedOutdoor;
                 $_SESSION['inter'] = $selectedIndoor;
                 $_SESSION['member']->setOutDoorInterests($_SESSION['out']);
                 $_SESSION['member']->setInDoorInterests($_SESSION['inter']);
 
+                    $memberOther = $_SESSION['member'];
+                    $memberOther->setOutDoorInterests($selectedOutdoor);
+                    $memberOther->setInDoorInterests($selectedIndoor);
+                    $_SESSION['member'] = $memberOther;
+//                    insert the member outdoor and indoor interest into the insertMember()
+//                    $GLOBALS['db']->insertMember($_SESSION['member'], $selectedOutdoor);
 
 //                redirect to summary
                 $f3->reroute('/summary');
@@ -182,6 +189,10 @@ class DatingController{
         echo $view->render('views/form3.html');
 
     }
+
+    /**
+     * Creating a route for summary page and destroying the session
+     */
     public function summary()
     {
         $view = new Template();
@@ -189,5 +200,17 @@ class DatingController{
         //this will wipe everything
         session_destroy();
         $_SESSION = array();
+    }
+
+    /**
+     * creating a route and inserting the member data into the admin page
+     */
+    public function admin()
+    {
+        $membersTotal = $GLOBALS['db']->getMembers();
+        $this->_f3->set('members', $membersTotal);
+
+        $view = new Template();
+        echo $view->render('views/admin.php');
     }
 }

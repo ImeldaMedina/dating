@@ -33,6 +33,9 @@ $f3->set('indoors', array('tv', 'puzzles', 'movies', 'reading', 'cooking',
     'playing cards', 'board games', 'video games'));
 $f3->set('outdoors', array('hiking', 'walking', 'biking', 'climbing', 'swimming', 'collecting'));
 
+//instantiates a new database
+$db= new Database();
+
 //Instantiate controller object
 $controller= new DatingController($f3);
 
@@ -41,9 +44,10 @@ $f3->route('GET /', function(){
     $GLOBALS['controller']->home();
 
 });
+
 //define a new root for order
-$f3->route('GET|POST /admin', function($f3){
-    $GLOBALS['controller']->admin($f3);
+$f3->route('GET|POST /admin', function(){
+    $GLOBALS['controller']->admin();
 });
 
 //define a new root for order
@@ -51,16 +55,16 @@ $f3->route('GET|POST /order', function($f3){
     $GLOBALS['controller']->order($f3);
 });
 
-
+//define a new root for order 2
 $f3->route('GET|POST /order2', function($f3){
     $GLOBALS['controller']->order2($f3);
 });
 
-//Get indor and outdoor interests
+//define a new root for order 3
 $f3->route('GET|POST /order3', function($f3){
     $GLOBALS['controller']->order3($f3);
 });
-//get the results printed
+//define a new root for summary
 $f3->route('GET|POST /summary', function(){
     $GLOBALS['controller']->summary();
 });

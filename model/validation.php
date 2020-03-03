@@ -28,13 +28,32 @@ class Validation
         $this->validLast($_POST['lName']);
         $this->validAge($_POST['age']);
         $this->validPhone($_POST['phoneNum']);
-        $this->validEmail($_POST['email']);
-        $this->validOutdoor($_POST['outdoor']);
-        $this->validIndoor($_POST['indoor']);
+//        $this->validEmail($_POST['email']);
+//        $this->validOutdoor($_POST['outdoor']);
+//        $this->validIndoor($_POST['indoor']);
         //If the $errors array is empty, then we have valid data
+//        var_dump($this->_errors);
         return empty($this->_errors);
     }
 
+    public function validSecondForm(){
+        //empty errors array
+        $this->_errors = array();
+        //check for email errors
+        $this->validEmail($_POST['email']);
+        //return the value
+        return empty($this->_errors);
+    }
+
+    public function validInterestForm(){
+        //empty errors array
+        $this->_errors = array();
+        //check for valid indoor and outdoor
+        $this->validOutdoor($_POST['outdoor']);
+        $this->validIndoor($_POST['indoor']);
+        //return the value
+        return empty($this->_errors);
+    }
     /**
      * checks to see that a string is all alphabetic REQUIRED
      * @param $fname first name
@@ -42,7 +61,7 @@ class Validation
     function validName($fname)
     {
         //First name is required
-        if (empty($fname) && ctype_alpha($fname)) {
+        if (empty($fname) || !ctype_alpha($fname)) {
             $this->_errors['fname'] = "First name is required";
         }
     }
@@ -53,7 +72,7 @@ class Validation
     function validLast($lName)
     {
         //last name is required
-        if (empty($lName) && ctype_alpha($lName)) {
+        if (empty($lName) || !ctype_alpha($lName)) {
             $this->_errors['lName'] = "Last name is required";
         }
     }
@@ -63,7 +82,7 @@ class Validation
      */
     function validAge($age)
     {
-        if (empty($age) && ctype_digit($age) && $age > 18 && $age < 118) {
+        if (empty($age) || !ctype_digit($age) && $age > 18 && $age < 118) {
             $this->_errors['age'] = "Age is required and must be between 18 and 118";
         }
     }
@@ -74,7 +93,7 @@ class Validation
      */
     function validPhone($phoneNum)
     {
-        if (empty($phoneNum) && strlen($phoneNum) == 10 && ctype_digit($phoneNum)) {
+        if (empty($phoneNum) || !strlen($phoneNum) == 10 || !ctype_digit($phoneNum)) {
             $this->_errors['phoneNum'] = "Please enter a valid phone number";
         }
     }
@@ -84,7 +103,7 @@ class Validation
      */
     function validEmail($email)
     {
-        if (empty($email) && filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
             $this->_errors['email'] = "Please enter a valid email";
         }
     }
@@ -96,9 +115,9 @@ class Validation
     function validOutdoor($outdoor)
     {
 
-        if (isset($outdoor)) {
-            $this->_errors['outdoor'] = "Please select a valid out-door interest";
-        }
+//        if (isset($outdoor)) {
+//            $this->_errors['outdoor'] = "Please select a valid out-door interest";
+//        }
     }
     /**
      * checks each selected indoor interest against a list of valid option
@@ -107,10 +126,10 @@ class Validation
 
     function validIndoor($indoor)
     {
-        global $f3;
-        if (isset($indoor)) {
-            $this->_errors['outdoor'] = "Please select a valid in-door interest";
-        }
+
+//        if (isset($indoor)) {
+//            $this->_errors['outdoor'] = "Please select a valid in-door interest";
+//        }
 
 
     }
